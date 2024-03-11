@@ -1,0 +1,64 @@
+<span style="font-family: verdana, geneva, sans-serif;"><!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In/ Signup</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <input type="checkbox" id="show">
+    <label for="show" class="show-btn">Log  In / Sign Up</label>
+    
+    <!-- The Modal -->
+
+    <div class="container">
+        <label for="show" class="close-btn" title="close">×</label>
+        <h1>Welcome</h1>
+        <form action="#">
+            <label>Email or Phone</label>
+            <input type="text">
+            <label>Password</label>
+            <input type="password">
+            <a href="#">Forgot Password?</a>
+            <button>Submit</button>
+            <div class="link">Not a member? <a href="signup.html">Signup here</a></div>
+            
+        </form>
+    </div>
+
+
+    <!-- Last part of BODY element in file index.html -->
+    <script>
+        function signInCallback(authResult) {
+            if (authResult['code']) {
+
+                // Hide the sign-in button now that the user is authorized, for example:
+                $('#signinButton').attr('style', 'display: none');
+
+                // Send the code to the server
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://example.com/storeauthcode',
+                    // Always include an `X-Requested-With` header in every AJAX request,
+                    // to protect against CSRF attacks.
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    contentType: 'application/octet-stream; charset=utf-8',
+                    success: function (result) {
+                        // Handle or verify the server response.
+                    },
+                    processData: false,
+                    data: authResult['code']
+                });
+            } else {
+                // There was an error.
+            }
+        }
+    </script>
+</body>
+
+</html>
+</span>
