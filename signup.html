@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="login.css">
+    <!-- Add the Google Sign-In script -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Configure Google Sign-In -->
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <!-- The top of file index.html -->
+    <html itemscope itemtype="http://schema.org/Article">
+    
+    <head>
+        <!-- BEGIN Pre-requisites -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+        </script>
+        <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+        </script>
+        <!-- END Pre-requisites -->
+    <!-- Continuing the <head> section -->
+    <script>
+        function start() {
+            gapi.load('auth2', function () {
+                auth2 = gapi.auth2.init({
+                    client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+                    // Scopes to request in addition to 'profile' and 'email'
+                    //scope: 'additional_scope'
+                });
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <input type="checkbox" id="show">
+    <label for="show" class="show-btn">Log In / Sign Up</label>
+
+    <!-- The Modal -->
+
+    <div class="container">
+        <label for="show" class="close-btn" title="close">×</label>
+        <h1>Welcome</h1>
+        <form action="#"method="post">
+            <label>Phone</label>
+            <input type="tel">
+            <label>Email </label>
+            <input type="text">
+            <label>Password</label>
+            <input type="password">
+            <button>Sign Up</button>
+            <div class="google-signup">
+                <!-- Google Sign-In button -->
+                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
+
+                </div>
+            </div>
+            <div class="link">Already a member? <a href="login.html">Log in here</a></div>
+        </form>
+    </div>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail());
+             // This is null if the 'email' scope is not present.
+            // You can send the user's profile information to your backend for registration.
+        }
+    </script>
+</body>
+
+</html>
