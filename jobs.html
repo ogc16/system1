@@ -70,24 +70,26 @@
                         <option>App Design</option>
                         <option>App Development</option>
                     </select>
-                    <select class="filter">
-                        <option>Filter</option>
+                    <select id="job-filter" class="filter">
+                        <option value="">Filter</option>
+                        <option value="3">Last 3 days</option>
+                        <option value="5">Last 5 days</option>
                     </select>
                 </div>
 
                 <div class="tags_bar">
-                    <div class="tag">
-                        <i class="fas fa-times"></i>
-                        <span>Programming</span>
-                    </div>
-                    <div class="tag">
-                        <i class="fas fa-times"></i>
-                        <span>Design</span>
-                    </div>
-                    <div class="tag">
-                        <i class="fas fa-times"></i>
-                        <span>Marketing</span>
-                    </div>
+<div class="tag" data-tag="programming">
+                            <i class="fas fa-times"></i>
+                            <span>Programming</span>
+                        </div>
+                        <div class="tag" data-tag="design">
+                            <i class="fas fa-times"></i>
+                            <span>Design</span>
+                        </div>
+                        <div class="tag" data-tag="marketing">
+                            <i class="fas fa-times"></i>
+                            <span>Marketing</span>
+                        </div>
                 </div>
 
 <div class="row">
@@ -95,7 +97,7 @@
                     <a href="job-details.html">See all</a>
                 </div>
 
-                <div class="job_card">
+                <div class="job_card" data-tags="design">
                     <div class="job_details">
                         <div class="img">
                             <i class="fab fa-google-drive"></i>
@@ -111,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="job_card">
+                <div class="job_card" data-tags="programming">
                     <div class="job_details">
                         <div class="img">
                             <i class="fab fa-google"></i>
@@ -127,7 +129,7 @@
                     </div>
                 </div>
 
-                <div class="job_card">
+                <div class="job_card" data-tags="programming">
                     <div class="job_details">
                         <div class="img">
                             <i class="fab fa-facebook"></i>
@@ -143,7 +145,7 @@
                     </div>
                 </div>
 
-                <div class="job_card">
+                <div class="job_card" data-tags="programming">
                     <div class="job_details">
                         <div class="img">
                             <i class="fab fa-git-alt"></i>
@@ -159,7 +161,7 @@
                     </div>
                 </div>
 
-                <div class="job_card">
+                <div class="job_card" data-tags="programming">
                     <div class="job_details">
                         <div class="img">
                             <i class="fab fa-youtube"></i>
@@ -175,7 +177,7 @@
                     </div>
                 </div>
 
-                <div class="job_card">
+                <div class="job_card" data-tags="programming">
                     <div class="job_details">
                         <div class="img">
                             <i class="fab fa-microsoft"></i>
@@ -191,7 +193,7 @@
                     </div>
                 </div>
 
-                <div class="job_card">
+                <div class="job_card" data-tags="marketing">
                     <div class="job_details">
                         <div class="img">
                             <i class="fab fa-amazon"></i>
@@ -217,27 +219,59 @@
 <script>
         const searchInput = document.getElementById('job-search');
         const categorySelect = document.getElementById('job-category');
+        const filterSelect = document.getElementById('job-filter');
+        const tagChips = Array.from(document.querySelectorAll('.tag[data-tag]'));
         const cards = Array.from(document.querySelectorAll('.job_card'));
         const jobCount = document.getElementById('job-count');
+        const activeTags = [];
+
+        function daysPosted(card) {
+            const meta = card.querySelector('.job_salary span');
+            const match = (meta ? meta.textContent : '').match(/(\d+)\s*days?/i);
+            return match ? parseInt(match[1], 10) : 999;
+        }
 
         function applyFilters() {
             const query = searchInput.value.trim().toLowerCase();
             const category = categorySelect.value.toLowerCase();
+            const maxDays = filterSelect.value ? parseInt(filterSelect.value, 10) : null;
 
             let visible = 0;
             cards.forEach(function (card) {
                 const text = (card.textContent || '').toLowerCase();
+                const cardTags = (card.getAttribute('data-tags') || '').split(',').map(function (t) {
+                    return t.trim();
+                });
                 const matchesQuery = !query || text.includes(query);
                 const matchesCategory = !category || category === 'category' || text.includes(category);
-                const show = matchesQuery && matchesCategory;
+                const matchesFilter = maxDays === null || daysPosted(card) <= maxDays;
+                const matchesTags = activeTags.length === 0 || cardTags.some(function (t) {
+                    return activeTags.includes(t);
+                });
+                const show = matchesQuery && matchesCategory && matchesFilter && matchesTags;
                 card.style.display = show ? '' : 'none';
                 if (show) visible++;
             });
             jobCount.textContent = visible;
         }
 
+        tagChips.forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                const tag = chip.getAttribute('data-tag');
+                const index = activeTags.indexOf(tag);
+                if (index === -1) {
+                    activeTags.push(tag);
+                } else {
+                    activeTags.splice(index, 1);
+                }
+                chip.classList.toggle('active');
+                applyFilters();
+            });
+        });
+
         searchInput.addEventListener('input', applyFilters);
         categorySelect.addEventListener('change', applyFilters);
+        filterSelect.addEventListener('change', applyFilters);
         applyFilters();
     </script>
 </body>

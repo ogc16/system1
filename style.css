@@ -130,6 +130,10 @@ h1{
 .tag i{
   margin-right: 0.7rem;
 }
+.tag.active{
+  background: blueviolet;
+  color: #fff;
+}
 .row{
   display: flex;
   padding: 10px;
