@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About the Job Portal.">
+    <meta name="description" content="About the Job Portal — a curated marketplace for tech jobs, internships, and international opportunities.">
     <title>About | Job Portal</title>
     <link rel="icon" type="image/jpeg" href="pic/logo.jpg">
     <link rel="stylesheet" href="style.css" />
@@ -20,49 +20,104 @@
                 <p>About Us</p>
             </div>
             <div class="main-body">
-                <h1>About Us</h1>
 
-                <div class="job_card">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fas fa-bullhorn"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Who We Are</h2>
-                            <span>We connect talented job seekers with great companies around the world.</span>
-                        </div>
+                <!-- Mission -->
+                <section class="about-hero" aria-labelledby="about-mission-title">
+                    <h1 id="about-mission-title">The job portal built for tech, not for everyone</h1>
+                    <p>Most job boards drown you in thousands of irrelevant listings. The Job Portal is different:
+                        we hand-curate every role across software engineering, design, and data so that job seekers
+                        find signal — not noise — and employers reach candidates who are actually ready to build.</p>
+                    <div class="about-hero-cta">
+                        <a href="jobs.html" class="btn btn-primary">Browse Jobs</a>
+                        <a href="signup.html" class="btn btn-ghost">Post a Job</a>
                     </div>
-                </div>
+                </section>
 
-                <div class="job_card">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Our Mission</h2>
-                            <span>Making job hunting simple, fast, and accessible for everyone.</span>
-                        </div>
+                <!-- Quick links -->
+                <nav class="about-quick-nav" aria-label="Quick links">
+                    <a href="jobs.html"><i class="fas fa-briefcase" aria-hidden="true"></i> Open Jobs</a>
+                    <a href="index.html#featured"><i class="fas fa-star" aria-hidden="true"></i> Internships</a>
+                    <a href="help.html"><i class="fas fa-handshake" aria-hidden="true"></i> Employers</a>
+                    <a href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a>
+                </nav>
+
+                <!-- Stats -->
+                <section class="about-stats" aria-label="Portal statistics">
+                    <div class="stat">
+                        <span class="stat-num">400+</span>
+                        <span class="stat-label">Active listings</span>
                     </div>
-                </div>
-
-                <div class="job_card">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Our Partners</h2>
-                            <span>Trusted by 400+ companies across design, engineering, and marketing.</span>
-                        </div>
+                    <div class="stat">
+                        <span class="stat-num">1,200+</span>
+                        <span class="stat-label">Applications / month</span>
                     </div>
-                </div>
+                    <div class="stat">
+                        <span class="stat-num">3,800+</span>
+                        <span class="stat-label">Registered users</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">96</span>
+                        <span class="stat-label">Hires completed</span>
+                    </div>
+                </section>
 
-                <div class="row">
-                    <p>Want to get started? <span>Join us today</span>.</p>
-                    <a href="signup.html" class="tag">Create Account</a>
-                    <a href="help.html" class="tag">Get Help</a>
-                </div>
+                <!-- Value proposition: job seekers -->
+                <section class="about-value" aria-labelledby="seekers-title">
+                    <div class="about-value-head">
+                        <i class="fas fa-user-graduate" aria-hidden="true"></i>
+                        <h2 id="seekers-title">For Job Seekers</h2>
+                    </div>
+                    <ul class="about-value-list">
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Every listing is reviewed by a human — no reposted junk.</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> International & remote roles in one place.</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Skill-based matching, not just keywords.</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> One-click application with your saved profile.</li>
+                    </ul>
+                </section>
+
+                <!-- Value proposition: employers -->
+                <section class="about-value" aria-labelledby="employers-title">
+                    <div class="about-value-head">
+                        <i class="fas fa-handshake" aria-hidden="true"></i>
+                        <h2 id="employers-title">For Employers</h2>
+                    </div>
+                    <ul class="about-value-list">
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Candidate pools focused on engineering, design, and data.</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Post a role in under two minutes.</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Lower cost-per-hire than broad job boards.</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Verified applicants with portfolios previewed before you are contacted.</li>
+                    </ul>
+                </section>
+
+                <!-- Testimonials -->
+                <section class="about-testimonials" aria-labelledby="testimonials-title">
+                    <h2 id="testimonials-title">Success stories</h2>
+                    <div class="about-testimonial-grid">
+                        <figure class="testimonial">
+                            <blockquote>“The only portal where the roles actually matched my skillset. I had two interviews in the first week.”</blockquote>
+                            <figcaption><strong>Sarah Chen</strong> — UX Designer, Google Drive</figcaption>
+                        </figure>
+                        <figure class="testimonial">
+                            <blockquote>“We stopped chasing resumes on other boards. The candidates here come pre-vetted and portfolio-ready.”</blockquote>
+                            <figcaption><strong>Marcus Rivera</strong> — Engineering Manager, Shopify</figcaption>
+                        </figure>
+                        <figure class="testimonial">
+                            <blockquote>“My first internship came through this portal — the international listings section is a game changer.”</blockquote>
+                            <figcaption><strong>Priya Patel</strong> — Intern, Figma</figcaption>
+                        </figure>
+                    </div>
+                </section>
+
+                <!-- Contact -->
+                <section class="about-contact" id="contact" aria-labelledby="contact-title">
+                    <h2 id="contact-title">Talk to a human</h2>
+                    <p>Questions about an application or a listing? We typically reply within one business day.</p>
+                    <div class="about-contact-links">
+                        <a href="mailto:support@jobportal.dev"><i class="fas fa-envelope" aria-hidden="true"></i> support@jobportal.dev</a>
+                        <a href="help.html"><i class="fas fa-question-circle" aria-hidden="true"></i> Visit Help Center</a>
+                    </div>
+                </section>
+
             </div>
         </main>
     </div>
