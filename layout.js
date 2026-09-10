@@ -9,7 +9,8 @@
         { href: 'jobs.html', icon: 'fas fa-tasks', label: 'Jobs Board' },
         { href: 'documents.html', icon: 'fas fa-file-alt', label: 'Documents' },
         { href: 'settings.html', icon: 'fas fa-cog', label: 'Settings' },
-        { href: 'help.html', icon: 'fas fa-question-circle', label: 'Help' }
+        { href: 'help.html', icon: 'fas fa-question-circle', label: 'Help' },
+        { href: 'about.html', icon: 'fas fa-info-circle', label: 'About' }
     ];
 
     function currentPage() {
