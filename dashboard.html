@@ -1,63 +1,22 @@
-<span style="font-family: verdana, geneva, sans-serif;">
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <title>Job Dashboard | By Code Info</title>
-        <link rel="stylesheet" href="style.css" />
-        <!-- Font Awesome Cdn Link -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard with recent jobs.">
+    <title>Job Dashboard | Job Portal</title>
+    <link rel="icon" type="image/jpeg" href="pic/logo.jpg">
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
 
-    <body>
-        <div class="container">
-            <nav>
-                <div class="navbar">
-                    <div class="logo">
-                        <a href="index.html"><img src="pic/logo.jpg" alt=""></a>
-                        <h1><a href="index.html">jobs</a></h1>
-                    </div>
-                    <ul>
-                        <li><a href="dashboard.html">
-                                <i class="fas fa-user"></i>
-                                <span class="nav-item">Dashboard</span>
-                            </a>
-                        </li>
-                        <li><a href="analytics.html">
-                                <i class="fas fa-chart-bar"></i>
-                                <span class="nav-item">Analytics</span>
-                            </a>
-                        </li>
-                        <li><a href="jobs.html">
-                                <i class="fas fa-tasks"></i>
-                                <span class="nav-item">Jobs Board</span>
-                            </a>
-                        </li>
-                        <li><a href="documents.html">
-                                <i class="fas fa-file-alt"></i>
-                                <span class="nav-item">Documents</span>
-                            </a>
-                        </li>
-                        <li><a href="settings.html">
-                                <i class="fas fa-cog"></i>
-                                <span class="nav-item">Settings</span>
-                            </a>
-                        </li>
-                        <li><a href="help.html">
-                                <i class="fas fa-question-circle"></i>
-                                <span class="nav-item">Help</span>
-                            </a>
-                        </li>
-                        <li><a href="login.html" class="logout">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span class="nav-item">Logout</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+<body>
+    <div class="container">
+        <nav id="app-nav" aria-label="Main navigation"></nav>
 
-            <section class="main">
+            <main class="main">
                 <div class="main-top">
                     <p>Explore the universe!</p>
                 </div>
@@ -183,7 +142,7 @@
                         </div>
                     </a>
                 </div>
-            </section>
+            </main>
         </div>
 
     <script>
@@ -244,7 +203,7 @@
         filterSelect.addEventListener('change', applyFilters);
         applyFilters();
     </script>
+    <script src="layout.js"></script>
 </body>
 
-    </html>
-</span>
+</html>
