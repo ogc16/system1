@@ -1,10 +1,15 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
 body{
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to right, #20002c,
- #cbb4d4);
+  #cbb4d4);
+  min-height: 100vh;
 }
 .show-btn{
     padding: 10px 20px;
@@ -128,6 +133,7 @@ a:hover{
     }
     .container{
         width: 90%;
+        max-width: 420px;
         left: 50%;
     }
 }
@@ -136,13 +142,45 @@ a:hover{
     .show-btn{
         font-size: 16px;
         padding: 8px 16px;
+        top: 8%;
     }
     .container{
-        width: 92%;
+        width: 100%;
         max-width: 320px;
         padding: 16px;
+        top: 50%;
     }
     form{
         margin: 12px;
+    }
+    input{
+        width: 100%;
+    }
+    button{
+        width: 100%;
+    }
+    h1{
+        font-size: 22px;
+    }
+    label{
+        font-size: 15px;
+    }
+    .link{
+        margin-top: 20px;
+    }
+}
+
+@media (max-height: 480px) and (orientation: landscape){
+    .show-btn{
+        top: 10%;
+    }
+    .container{
+        top: 50%;
+        left: 50%;
+    }
+    form{
+        margin: 8px;
+        max-height: 70vh;
+        overflow-y: auto;
     }
 }
