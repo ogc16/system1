@@ -25,13 +25,26 @@
                 <div class="search_bar">
                     <input type="search" id="job-search" placeholder="Search job here..." aria-label="Search jobs">
                     <select id="job-category" aria-label="Filter by category">
-                        <option>Category</option>
-                        <option>Programming</option>
-                        <option>Design</option>
-                        <option>Marketing</option>
+                        <option value="">Category</option>
+                        <option value="programming">Programming</option>
+                        <option value="design">Design</option>
+                        <option value="marketing">Marketing</option>
+                    </select>
+                    <select id="job-location" aria-label="Filter by location">
+                        <option value="">Any location</option>
+                        <option value="remote">Remote</option>
+                        <option value="hybrid">Hybrid</option>
+                        <option value="onsite">On-site</option>
+                    </select>
+                    <select id="job-salary" aria-label="Filter by salary range">
+                        <option value="">Any salary</option>
+                        <option value="0-90">Under $90k</option>
+                        <option value="90-130">$90k &ndash; $130k</option>
+                        <option value="130-160">$130k &ndash; $160k</option>
+                        <option value="160-400">$160k+</option>
                     </select>
                     <select id="job-filter" class="filter" aria-label="Filter by recency">
-                        <option value="">Filter</option>
+                        <option value="">Last posted</option>
                         <option value="3">Last 3 days</option>
                         <option value="5">Last 5 days</option>
                     </select>

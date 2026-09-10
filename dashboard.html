@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dashboard with recent jobs.">
+    <meta name="description" content="Personal job dashboard with application tracking, recommendations and notifications.">
     <title>Job Dashboard | Job Portal</title>
     <link rel="icon" type="image/jpeg" href="pic/logo.jpg">
     <link rel="stylesheet" href="style.css" />
-    <!-- Font Awesome Cdn Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 
@@ -16,24 +15,89 @@
     <div class="container">
         <nav id="app-nav" aria-label="Main navigation"></nav>
 
-            <main class="main">
-                <div class="main-top">
-                    <p>Explore the universe!</p>
-                </div>
-                <div class="main-body">
-                    <h1>Recent Jobs</h1>
+        <main class="main">
+            <div class="main-top">
+                <p>Dashboard</p>
+            </div>
+            <div class="main-body">
+
+                <!-- Welcome banner -->
+                <section class="welcome-banner" aria-labelledby="welcome-title">
+                    <div class="welcome-text">
+                        <h1 id="welcome-title">Welcome back, <span id="user-name">Alex</span>!</h1>
+                        <p>Here&rsquo;s what&rsquo;s happening with your job search this week.</p>
+                    </div>
+                    <div class="welcome-actions">
+                        <button type="button" class="btn btn-primary" id="go-pipeline">Continue Application</button>
+                        <button type="button" class="btn btn-ghost" id="go-recommendations">View Recommended Jobs</button>
+                    </div>
+                </section>
+
+                <!-- Summary stats -->
+                <section class="stat-strip" aria-label="Application summary">
+                    <div class="stat-card">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        <div><span class="stat-num" id="stat-applied">0</span><span class="stat-label">Jobs Applied</span></div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <div><span class="stat-num" id="stat-interviews">0</span><span class="stat-label">Interviews Scheduled</span></div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-bookmark" aria-hidden="true"></i>
+                        <div><span class="stat-num" id="stat-saved">0</span><span class="stat-label">Saved Jobs</span></div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy" aria-hidden="true"></i>
+                        <div><span class="stat-num" id="stat-offers">0</span><span class="stat-label">Offers Received</span></div>
+                    </div>
+                </section>
+
+                <!-- Notifications -->
+                <section class="notif-panel" aria-labelledby="notif-title">
+                    <header class="notif-head">
+                        <h2 id="notif-title">Notifications</h2>
+                        <div class="notif-tools">
+                            <span class="unread-badge" id="notif-count" hidden>3</span>
+                            <button type="button" id="mark-read" class="tag">Mark all as read</button>
+                        </div>
+                    </header>
+                    <ul id="notif-list" class="notif-list"></ul>
+                </section>
+
+                <!-- Recommended jobs -->
+                <section id="recommendations" aria-labelledby="rec-title">
+                    <header class="section-head">
+                        <h2 id="rec-title">Recommended for you</h2>
+                        <span class="new-jobs-chip"><i class="fas fa-bolt" aria-hidden="true"></i> 20 new jobs posted today in your field</span>
+                    </header>
+                    <p class="rec-reason">Matched to your profile &mdash; you applied to Design and JavaScript roles recently.</p>
 
                     <div class="search_bar">
                         <input type="search" id="job-search" placeholder="Search job here..." aria-label="Search jobs">
                         <select id="job-category" aria-label="Filter by category">
-                            <option>Category</option>
-                            <option>Programming</option>
-                            <option>Design</option>
-                            <option>PHP</option>
-                            <option>JavaScript</option>
+                            <option value="">Category</option>
+                            <option value="programming">Programming</option>
+                            <option value="design">Design</option>
+                            <option value="php">PHP</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="marketing">Marketing</option>
+                        </select>
+                        <select id="job-location" aria-label="Filter by location">
+                            <option value="">Any location</option>
+                            <option value="remote">Remote</option>
+                            <option value="hybrid">Hybrid</option>
+                            <option value="onsite">On-site</option>
+                        </select>
+                        <select id="job-salary" aria-label="Filter by salary range">
+                            <option value="">Any salary</option>
+                            <option value="0-90">Under $90k</option>
+                            <option value="90-130">$90k &ndash; $130k</option>
+                            <option value="130-160">$130k &ndash; $160k</option>
+                            <option value="160-400">$160k+</option>
                         </select>
                         <select id="job-filter" class="filter" aria-label="Filter by recency">
-                            <option value="">Filter</option>
+                            <option value="">Last posted</option>
                             <option value="3">Last 3 days</option>
                             <option value="5">Last 5 days</option>
                         </select>
@@ -70,12 +134,37 @@
                         <p>No jobs match your current filters.</p>
                         <button type="button" class="tag" id="clear-filters">Clear Filters</button>
                     </div>
-                </div>
-            </main>
-        </div>
+                </section>
+
+                <!-- Application pipeline -->
+                <section id="pipeline" aria-labelledby="pipeline-title">
+                    <header class="section-head">
+                        <h2 id="pipeline-title">My Applications</h2>
+                        <a href="analytics.html" class="see-all">Track progress <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </header>
+                    <div id="pipeline-list" class="pipeline-list"></div>
+                </section>
+
+                <!-- Export & support -->
+                <section class="export-panel" aria-labelledby="export-title">
+                    <div>
+                        <h2 id="export-title">Your data, yours</h2>
+                        <p>Download your application history as a spreadsheet, or review your CV before you share it.</p>
+                        <div class="export-actions">
+                            <button type="button" class="btn btn-primary" id="export-csv"><i class="fas fa-download" aria-hidden="true"></i> Download application history</button>
+                            <a href="documents.html" class="btn btn-ghost"><i class="fas fa-file-alt" aria-hidden="true"></i> CV &amp; Documents</a>
+                        </div>
+                    </div>
+                    <a href="help.html" class="help-link"><i class="fas fa-question-circle" aria-hidden="true"></i> Need help? Visit the Help Center</a>
+                </section>
+
+            </div>
+        </main>
+    </div>
 
     <script src="jobs.js"></script>
     <script src="job-filters.js"></script>
+    <script src="dashboard.js"></script>
     <script src="layout.js"></script>
 </body>
 

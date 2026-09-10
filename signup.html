@@ -28,6 +28,21 @@
             <div class="link">Already a member? <a href="login.html">Log in here</a></div>
         </form>
     </div>
+
+    <script>
+        (function () {
+            var form = document.querySelector('form');
+            if (!form) { return; }
+            form.addEventListener('submit', function () {
+                var email = document.getElementById('signup-email');
+                var name = '';
+                if (email && email.value) { name = email.value.split('@')[0]; }
+                try {
+                    localStorage.setItem('portal.user', JSON.stringify({ name: name }));
+                } catch (e) { /* storage unavailable */ }
+            });
+        })();
+    </script>
 </body>
 
 </html>

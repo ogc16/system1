@@ -15,15 +15,17 @@
     var SEARCH_DELAY = 250;          // ms debounce
     var SKELETON_MS  = 350;          // simulated load delay for skeleton demo
 
-    var SEARCH_INPUT  = document.getElementById('job-search');
-    var CATEGORY_SEL  = document.getElementById('job-category');
-    var FILTER_SEL    = document.getElementById('job-filter');
-    var JOB_LIST      = document.getElementById('job-list');
-    var FEATURED_LIST = document.getElementById('featured-jobs');
-    var COUNT_EL      = document.getElementById('job-count');
-    var EMPTY_EL      = document.getElementById('no-results');
-    var tagChips      = Array.prototype.slice.call(document.querySelectorAll('.tag[data-tag]'));
-    var activeTags    = [];
+    var SEARCH_INPUT   = document.getElementById('job-search');
+    var CATEGORY_SEL   = document.getElementById('job-category');
+    var LOCATION_SEL   = document.getElementById('job-location');
+    var SALARY_SEL     = document.getElementById('job-salary');
+    var FILTER_SEL     = document.getElementById('job-filter');
+    var JOB_LIST       = document.getElementById('job-list');
+    var FEATURED_LIST  = document.getElementById('featured-jobs');
+    var COUNT_EL       = document.getElementById('job-count');
+    var EMPTY_EL       = document.getElementById('no-results');
+    var tagChips       = Array.prototype.slice.call(document.querySelectorAll('.tag[data-tag]'));
+    var activeTags     = [];
 
     var SKELETON_HTML =
         '<div class="skeleton-card" aria-hidden="true">' +
@@ -133,6 +135,21 @@
         return job.categories.indexOf(sel) !== -1;
     }
 
+    function matchesLocation(job) {
+        var sel = LOCATION_SEL ? LOCATION_SEL.value.toLowerCase() : '';
+        if (!sel) { return true; }
+        return job.location.toLowerCase().indexOf(sel.slice(0, 2)) === 0;
+    }
+
+    function matchesSalary(job) {
+        var range = SALARY_SEL ? SALARY_SEL.value : '';
+        if (!range) { return true; }
+        var parts = range.split('-');
+        var lo = parseInt(parts[0], 10);
+        var hi = parseInt(parts[1], 10);
+        return job.salaryMax >= lo && job.salaryMin <= hi;
+    }
+
     function applyFilters() {
         var all = baseJobs();
         var query = SEARCH_INPUT.value.trim().toLowerCase();
@@ -144,11 +161,13 @@
             var text = (job.title + ' ' + job.company).toLowerCase();
             var matchesQuery  = !query || text.indexOf(query) !== -1;
             var matchesCats   = matchesCategory(job);
+            var matchesLoc    = matchesLocation(job);
+            var matchesSal    = matchesSalary(job);
             var matchesDays   = maxDays === null || daysPosted(job) <= maxDays;
             var matchesTags   = activeTags.length === 0 || job.categories.some(function (c) {
                 return activeTags.indexOf(c) !== -1;
             });
-            if (matchesQuery && matchesCats && matchesDays && matchesTags) {
+            if (matchesQuery && matchesCats && matchesLoc && matchesSal && matchesDays && matchesTags) {
                 visible.push(job);
             }
         }
@@ -210,6 +229,8 @@
         clearBtn.addEventListener('click', function () {
             if (SEARCH_INPUT) { SEARCH_INPUT.value = ''; }
             if (CATEGORY_SEL) { CATEGORY_SEL.value = ''; }
+            if (LOCATION_SEL) { LOCATION_SEL.value = ''; }
+            if (SALARY_SEL)   { SALARY_SEL.value   = ''; }
             if (FILTER_SEL)   { FILTER_SEL.value   = ''; }
             tagChips.forEach(function (chip) {
                 chip.classList.remove('active');
@@ -226,6 +247,8 @@
         SEARCH_INPUT.addEventListener('input', debounce(applyFilters, SEARCH_DELAY));
     }
     if (CATEGORY_SEL) { CATEGORY_SEL.addEventListener('change', applyFilters); }
+    if (LOCATION_SEL) { LOCATION_SEL.addEventListener('change', applyFilters); }
+    if (SALARY_SEL)   { SALARY_SEL.addEventListener('change', applyFilters); }
     if (FILTER_SEL)   { FILTER_SEL.addEventListener('change', applyFilters); }
 
     /* ── Bootstrap ────────────────────────────────────────────────────── */

@@ -7,11 +7,11 @@ A lightweight, static job search portal with a live filtering dashboard. Pure HT
 | Page | Purpose |
 | --- | --- |
 | `index.html` | Landing page with featured jobs |
-| `dashboard.html` | Job board with search, category, recency and tag filtering |
+| `dashboard.html` | Control center: summary stats, notifications, application pipeline, recommendations + filters |
 | `jobs.html` | Full job list with the same filtering as the dashboard |
 | `job-details.html` | Individual job detail view |
 | `analytics.html` | Portal statistics |
-| `documents.html` | User documents |
+| `documents.html` | User documents / CV |
 | `settings.html` | Account settings |
 | `help.html` | Support / FAQ |
 | `about.html` | About the portal |
@@ -53,6 +53,7 @@ npx serve .
 ├── login.css               # Auth page styles
 ├── jobs.js                 # Job data (single source of truth for all listings)
 ├── job-filters.js          # Renderer, debounced search, skeleton, empty state, badges
+├── dashboard.js            # Dashboard: greeting, stats, notifications, pipeline, CSV export
 ├── layout.js               # Shared sidebar navigation (single source of truth)
 └── pic/logo.jpg            # Favicon / brand logo
 ```
@@ -60,7 +61,8 @@ npx serve .
 ## How the shared pieces work
 
 - **`jobs.js`** — the single source of truth for all job listings. Each entry carries the title, company, icon class, salary range, posting age, category tags, and structured fields for location, type, and seniority level — all rendered automatically.
-- **`job-filters.js`** — renders cards from `jobs.js` and powers search (debounced 250 ms), category select, recency select, and tag chips on `dashboard.html` / `jobs.html`. On `index.html` it renders the top 3 most recent jobs as featured cards. A skeleton shimmer is shown briefly during initial render, and an empty state appears when no jobs match the current filters.
+- **`job-filters.js`** — renders cards from `jobs.js` and powers search (debounced 250 ms), category, location, salary-range, recency selects, and tag chips on `dashboard.html` / `jobs.html`. All filter controls are optional — a page shows only the controls it defines. On `index.html` it renders the top 3 most recent jobs as featured cards. A skeleton shimmer is shown briefly during initial render, and an empty state appears when no jobs match the current filters.
+- **`dashboard.js`** — the dashboard control center. Greets the user by name (read from `localStorage.portal.user`, set when logging in or signing up), computes summary stats (applied / interviews / saved / offers), renders the application pipeline with a 4-step progress bar (Applied → Shortlisted → Interview → Offer), lists notifications with read-state badges, and exports application history as a CSV download.
 - **`layout.js`** — injects the sidebar into every portal page (pages contain only `<nav id="app-nav"></nav>`). It detects the current page from the URL and marks the matching link as active, so adding or renaming a page is a one-line change.
 - **`style.css`** — colors are defined once as CSS variables in `:root` (e.g. `--accent`, `--bg`), so rebranding is a single edit. Includes card hover/active/focus-visible states, colored badge pills for location/type/level, skeleton shimmer animation, and responsive breakpoints at 1024px, 768px, and 480px.
 
@@ -98,6 +100,7 @@ The renderer in `job-filters.js` handles all markup, badges, and count automatic
 - All inputs have associated `<label>` elements; selects carry `aria-label`.
 - Filter tag chips are operable by mouse and keyboard (Enter / Space) and expose `aria-pressed` + `aria-controls`.
 - Each rendered card has a descriptive `aria-label` for screen readers.
+- The application pipeline uses `role="progressbar"` with numeric `aria-valuenow` for stage progress.
 - `aria-hidden="true"` on all decorative Font Awesome icons.
 - `aria-live="polite"` + `aria-busy` on the job list for announced count changes.
 - Empty state appears when no jobs match, with a clear-filters button.

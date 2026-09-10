@@ -25,6 +25,21 @@
             <div class="link">Not a member? <a href="signup.html">Signup here</a></div>
         </form>
     </div>
+
+    <script>
+        (function () {
+            var form = document.querySelector('form');
+            if (!form) { return; }
+            form.addEventListener('submit', function () {
+                var email = document.getElementById('login-email');
+                var name = '';
+                if (email && email.value) { name = email.value.split('@')[0]; }
+                try {
+                    localStorage.setItem('portal.user', JSON.stringify({ name: name }));
+                } catch (e) { /* storage unavailable */ }
+            });
+        })();
+    </script>
 </body>
 
 </html>
