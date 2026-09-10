@@ -520,6 +520,38 @@ h1{
   color: #fff;
 }
 
+.about-closing{
+  text-align: center;
+  background: linear-gradient(135deg, var(--icon-bg) 0%, #f4edf9 100%);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 34px 30px;
+  margin: 4px 4px 24px;
+}
+.about-closing-tagline{
+  color: var(--icon-color);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.about-closing-stats{
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+.about-closing-stats i{
+  color: var(--accent);
+  margin-right: 5px;
+}
+.about-closing h2{
+  margin: 0 0 18px;
+  font-size: 24px;
+  color: var(--text);
+}
+.about-closing .about-hero-cta{
+  justify-content: center;
+}
+
 /* ── Dashboard control center ───────────────────────────────────────── */
 
 .welcome-banner{

@@ -14,7 +14,7 @@ A lightweight, static job search portal with a live filtering dashboard. Pure HT
 | `documents.html` | User documents / CV |
 | `settings.html` | Account settings |
 | `help.html` | Support / FAQ |
-| `about.html` | About the portal |
+| `about.html` | About page: mission, value props, stats, testimonials, contact, closing CTA |
 | `login.html` | Sign-in form |
 | `signup.html` | Account creation form |
 | `forgot-password.html` | Password recovery form |
