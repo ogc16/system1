@@ -114,3 +114,29 @@ a{
 a:hover{
     text-decoration: underline;
 }
+
+/* Responsive */
+@media (max-width: 768px){
+    .show-btn{
+        left: 50%;
+    }
+    .container{
+        width: 90%;
+        left: 50%;
+    }
+}
+
+@media (max-width: 480px){
+    .show-btn{
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    .container{
+        width: 92%;
+        max-width: 320px;
+        padding: 16px;
+    }
+    form{
+        margin: 12px;
+    }
+}

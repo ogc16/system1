@@ -190,4 +190,107 @@ h1{
   transition: 0.4s;
 }
 
+/* Responsive */
+@media (max-width: 1024px){
+  .container{
+    width: 96%;
+  }
+  nav{
+    width: 220px;
+  }
+  .search_bar .filter{
+    width: 160px;
+  }
+  .tags_bar{
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px){
+  .container{
+    flex-direction: column;
+  }
+  nav{
+    position: static;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid rgb(190, 190, 190);
+  }
+  .navbar{
+    width: 100%;
+  }
+  nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  li{
+    padding-bottom: 0.5rem;
+  }
+  li a{
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+  }
+  nav i{
+    width: auto;
+    margin-right: 0.4rem;
+  }
+  .logout{
+    position: static;
+    margin: 0.5rem auto;
+    text-align: center;
+  }
+  .search_bar{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .search_bar input{
+    width: 100%;
+  }
+  .search_bar .filter{
+    width: 100%;
+  }
+  .main-body{
+    padding: 10px;
+  }
+  h1{
+    margin: 15px 5px;
+  }
+  .row{
+    flex-wrap: wrap;
+  }
+  .jobs .row{
+    margin-top: 1rem;
+  }
+  .job_card{
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .job_salary{
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px){
+  .main-top{
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .job_details .img i{
+    width: 50px;
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    padding: 8px;
+  }
+  .job_details .text{
+    margin-left: 1.2rem;
+  }
+  .job_salary h4{
+    font-size: 14px;
+  }
+  .tags_bar .tag{
+    padding: 8px 12px;
+  }
+}
+
 
