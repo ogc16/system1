@@ -65,8 +65,8 @@
                     <h1>Recent Jobs</h1>
 
                     <div class="search_bar">
-                        <input type="search" placeholder="Search job here...">
-                        <select name="" id="">
+                        <input type="search" id="job-search" placeholder="Search job here...">
+                        <select name="" id="job-category">
                             <option>Category</option>
                             <option>Web Design</option>
                             <option>App Design</option>
@@ -97,7 +97,7 @@
                     </div>
 
                     <div class="row">
-                        <p>There are more than <span>400</span> Jobs</p>
+                        <p>Showing <span id="job-count">5</span> Jobs</p>
                         <a href="jobs.html">See all</a>
                     </div>
 
@@ -184,7 +184,33 @@
             </section>
         </div>
 
-    </body>
+    <script>
+        const searchInput = document.getElementById('job-search');
+        const categorySelect = document.getElementById('job-category');
+        const cards = Array.from(document.querySelectorAll('.job_card'));
+        const jobCount = document.getElementById('job-count');
+
+        function applyFilters() {
+            const query = searchInput.value.trim().toLowerCase();
+            const category = categorySelect.value.toLowerCase();
+
+            let visible = 0;
+            cards.forEach(function (card) {
+                const text = (card.textContent || '').toLowerCase();
+                const matchesQuery = !query || text.includes(query);
+                const matchesCategory = !category || category === 'category' || text.includes(category);
+                const show = matchesQuery && matchesCategory;
+                card.style.display = show ? '' : 'none';
+                if (show) visible++;
+            });
+            jobCount.textContent = visible;
+        }
+
+        searchInput.addEventListener('input', applyFilters);
+        categorySelect.addEventListener('change', applyFilters);
+        applyFilters();
+    </script>
+</body>
 
     </html>
 </span>
