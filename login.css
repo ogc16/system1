@@ -13,9 +13,6 @@ body{
     color: white;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.25);
-}
-
-.show-btn{
     position: absolute;
     top: 45%;
     left: 30%;
@@ -37,13 +34,10 @@ input[type="checkbox"]{
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.18);
-
-}
-.container{
     position: absolute;
     top: 50%;
     left: 60%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 .container .close-btn{
     position: absolute;
@@ -84,6 +78,11 @@ input{
     color: white;
 }
 
+input:focus-visible{
+    border-bottom-color: #fff;
+    border-bottom-width: 2px;
+}
+
 button{
     display: block;
     width: 95%;
@@ -97,6 +96,13 @@ button{
     cursor: pointer;
     margin-top: 20px;
 
+}
+
+button:focus-visible,
+.show-btn:focus-visible,
+.close-btn:focus-visible{
+    outline: 2px solid white;
+    outline-offset: 2px;
 }
 
 a{

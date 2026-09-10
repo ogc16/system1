@@ -24,6 +24,12 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+/* Visible focus ring for keyboard users (does not affect mouse clicks) */
+:is(a, input, select, button, .tag, .job_card, .close-btn):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 body{
   background: var(--bg);
 }

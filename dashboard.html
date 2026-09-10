@@ -145,64 +145,7 @@
             </main>
         </div>
 
-    <script>
-        const searchInput = document.getElementById('job-search');
-        const categorySelect = document.getElementById('job-category');
-        const filterSelect = document.getElementById('job-filter');
-        const tagChips = Array.from(document.querySelectorAll('.tag[data-tag]'));
-        const cards = Array.from(document.querySelectorAll('.job_card'));
-        const jobCount = document.getElementById('job-count');
-        const activeTags = [];
-
-        function daysPosted(card) {
-            const meta = card.querySelector('.job_salary span');
-            const match = (meta ? meta.textContent : '').match(/(\d+)\s*days?/i);
-            return match ? parseInt(match[1], 10) : 999;
-        }
-
-        function applyFilters() {
-            const query = searchInput.value.trim().toLowerCase();
-            const category = categorySelect.value.toLowerCase();
-            const maxDays = filterSelect.value ? parseInt(filterSelect.value, 10) : null;
-
-            let visible = 0;
-            cards.forEach(function (card) {
-                const text = (card.textContent || '').toLowerCase();
-                const cardTags = (card.getAttribute('data-tags') || '').split(',').map(function (t) {
-                    return t.trim();
-                });
-                const matchesQuery = !query || text.includes(query);
-                const matchesCategory = !category || category === 'category' || text.includes(category);
-                const matchesFilter = maxDays === null || daysPosted(card) <= maxDays;
-                const matchesTags = activeTags.length === 0 || cardTags.some(function (t) {
-                    return activeTags.includes(t);
-                });
-                const show = matchesQuery && matchesCategory && matchesFilter && matchesTags;
-                card.style.display = show ? '' : 'none';
-                if (show) visible++;
-            });
-            jobCount.textContent = visible;
-        }
-
-        tagChips.forEach(function (chip) {
-            chip.addEventListener('click', function () {
-                const tag = chip.getAttribute('data-tag');
-                const index = activeTags.indexOf(tag);
-                if (index === -1) {
-                    activeTags.push(tag);
-                } else {
-                    activeTags.splice(index, 1);
-                }
-                chip.classList.toggle('active');
-                applyFilters();
-            });
-        });
-
-        searchInput.addEventListener('input', applyFilters);
-        categorySelect.addEventListener('change', applyFilters);
-        filterSelect.addEventListener('change', applyFilters);
-        applyFilters();
-    </script>
+    <script src="job-filters.js"></script>
     <script src="layout.js"></script>
 </body>
 
