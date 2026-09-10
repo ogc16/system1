@@ -24,6 +24,9 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+html{
+  scroll-behavior: smooth;
+}
 
 /* Visible focus ring for keyboard users (does not affect mouse clicks) */
 :is(a, input, select, button, .tag, .job_card, .close-btn):focus-visible {
@@ -44,7 +47,8 @@ nav{
   left: 0;
   bottom: 0;
   width: 280px;
-  height: 110vh;
+  height: 100vh;
+  overflow-y: auto;
   background: #fff;
 }
 .navbar{
@@ -349,6 +353,10 @@ h1{
   color: var(--icon-color);
   border: 2px solid var(--accent);
 }
+.btn:focus-visible{
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
 
 .about-quick-nav{
   display: flex;
@@ -374,6 +382,11 @@ h1{
 .about-quick-nav a:hover{
   border-color: var(--accent);
   color: var(--icon-color);
+}
+.about-quick-nav a:focus-visible{
+  outline: 3px solid var(--icon-color);
+  outline-offset: 3px;
+  border-color: var(--accent);
 }
 
 .about-stats{
@@ -970,7 +983,7 @@ h1{
     padding: 8px 12px;
   }
   .about-stats{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 10px;
   }
   .stat-num{
