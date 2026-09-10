@@ -23,6 +23,17 @@
     var JOB_LIST       = document.getElementById('job-list');
     var FEATURED_LIST  = document.getElementById('featured-jobs');
     var COUNT_EL       = document.getElementById('job-count');
+
+    /* Job-detail pages live under pages/; index.html at the root needs the
+       pages/ prefix while pages/*.html can use the bare filename. */
+    function jobDetailsHref() {
+        var parts = window.location.pathname.split('/');
+        if (parts.length >= 2 && parts[parts.length - 2].toLowerCase() === 'pages') {
+            return 'job-details.html';
+        }
+        return 'pages/job-details.html';
+    }
+    var JOB_DETAILS_HREF = jobDetailsHref();
     var EMPTY_EL       = document.getElementById('no-results');
     var tagChips       = Array.prototype.slice.call(document.querySelectorAll('.tag[data-tag]'));
     var activeTags     = [];
@@ -81,7 +92,7 @@
                     job.level + ', ' + job.type + ', ' + job.location + ', ' +
                     salaryText(job);
         return (
-            '<a href="job-details.html" class="job_card" data-tags="' + tags + '" aria-label="' + label + '">' +
+            '<a href="' + JOB_DETAILS_HREF + '" class="job_card" data-tags="' + tags + '" aria-label="' + label + '">' +
                 '<div class="job_details">' +
                     '<div class="img">' +
                         '<i class="' + job.icon + '" aria-hidden="true"></i>' +
