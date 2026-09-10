@@ -422,27 +422,38 @@ h1{
   padding: 22px 24px;
   margin: 0 4px 20px;
 }
-.about-value-head{
+.section-header{
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
+  margin: 26px 4px 14px;
 }
-.about-value-head i{
-  font-size: 22px;
+.section-header:first-child{
+  margin-top: 0;
+}
+.section-header i{
+  font-size: 20px;
   color: var(--icon-color);
   background: var(--icon-bg);
   width: 44px;
   height: 44px;
+  min-width: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
 }
-.about-value-head h2{
+.section-header h2{
   margin: 0;
   font-size: 20px;
   color: var(--text);
+}
+.about-value .section-header{
+  margin: 0 0 12px;
+}
+.about-contact .section-header{
+  justify-content: center;
+  margin: 0 0 12px;
 }
 .about-value-list{
   list-style: none;
@@ -462,9 +473,6 @@ h1{
   margin-top: 3px;
 }
 
-.about-testimonials h2{
-  margin: 24px 4px 14px;
-}
 .about-testimonial-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -501,9 +509,6 @@ h1{
   padding: 22px 24px;
   margin: 0 4px 10px;
   text-align: center;
-}
-.about-contact h2{
-  margin: 0 0 8px;
 }
 .about-contact p{
   color: var(--text-muted);
