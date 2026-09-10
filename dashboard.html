@@ -24,14 +24,15 @@
                     <h1>Recent Jobs</h1>
 
                     <div class="search_bar">
-                        <input type="search" id="job-search" placeholder="Search job here...">
-                        <select name="" id="job-category">
+                        <input type="search" id="job-search" placeholder="Search job here..." aria-label="Search jobs">
+                        <select id="job-category" aria-label="Filter by category">
                             <option>Category</option>
-                            <option>Web Design</option>
-                            <option>App Design</option>
-                            <option>App Development</option>
+                            <option>Programming</option>
+                            <option>Design</option>
+                            <option>PHP</option>
+                            <option>JavaScript</option>
                         </select>
-                        <select id="job-filter" class="filter">
+                        <select id="job-filter" class="filter" aria-label="Filter by recency">
                             <option value="">Filter</option>
                             <option value="3">Last 3 days</option>
                             <option value="5">Last 5 days</option>
@@ -40,19 +41,19 @@
 
                     <div class="tags_bar">
                         <div class="tag" data-tag="programming">
-                            <i class="fas fa-times"></i>
+                            <i class="fas fa-times" aria-hidden="true"></i>
                             <span>Programming</span>
                         </div>
                         <div class="tag" data-tag="design">
-                            <i class="fas fa-times"></i>
+                            <i class="fas fa-times" aria-hidden="true"></i>
                             <span>Design</span>
                         </div>
                         <div class="tag" data-tag="php">
-                            <i class="fas fa-times"></i>
+                            <i class="fas fa-times" aria-hidden="true"></i>
                             <span>PHP</span>
                         </div>
                         <div class="tag" data-tag="javascript">
-                            <i class="fas fa-times"></i>
+                            <i class="fas fa-times" aria-hidden="true"></i>
                             <span>JavaScript</span>
                         </div>
                     </div>
@@ -62,137 +63,18 @@
                         <a href="jobs.html">See all</a>
                     </div>
 
-                    <a href="job-details.html" class="job_card" data-tags="design">
-                        <div class="job_details">
-                            <div class="img">
-                                <i class="fab fa-google-drive"></i>
-                            </div>
-                            <div class="text">
-                                <h2>UX Designer</h2>
-                                <span>Google Drive - Junior Post</span>
-                            </div>
-                        </div>
-                        <div class="job_salary">
-                            <h4>$6.7 - $12.5k /yr</h4>
-                            <span>1 days ago</span>
-                        </div>
-                    </a>
+                    <div id="job-list" class="job-list" aria-live="polite" aria-busy="true"></div>
 
-                    <a href="job-details.html" class="job_card" data-tags="javascript">
-                        <div class="job_details">
-                            <div class="img">
-                                <i class="fab fa-google"></i>
-                            </div>
-                            <div class="text">
-                                <h2>JavaScript Developer</h2>
-                                <span>Google - Senior Post</span>
-                            </div>
-                        </div>
-                        <div class="job_salary">
-                            <h4>$8.7 - $13.2k /yr</h4>
-                            <span>2 days ago</span>
-                        </div>
-                    </a>
-
-                    <a href="job-details.html" class="job_card" data-tags="programming">
-                        <div class="job_details">
-                            <div class="img">
-                                <i class="fab fa-facebook"></i>
-                            </div>
-                            <div class="text">
-                                <h2>Product Developer</h2>
-                                <span>Facbook - Manager Post</span>
-                            </div>
-                        </div>
-                        <div class="job_salary">
-                            <h4>$11 - $18.5k /yr</h4>
-                            <span>2 days ago</span>
-                        </div>
-                    </a>
-
-                    <a href="job-details.html" class="job_card" data-tags="php,programming">
-                        <div class="job_details">
-                            <div class="img">
-                                <i class="fab fa-git-alt"></i>
-                            </div>
-                            <div class="text">
-                                <h2>Programmer</h2>
-                                <span>Github - Juni Post</span>
-                            </div>
-                        </div>
-                        <div class="job_salary">
-                            <h4>$6 - $11.5k /yr</h4>
-                            <span>3 days ago</span>
-                        </div>
-                    </a>
-
-                    <a href="job-details.html" class="job_card" data-tags="javascript">
-                        <div class="job_details">
-                            <div class="img">
-                                <i class="fab fa-youtube"></i>
-                            </div>
-                            <div class="text">
-                                <h2>React.js Expert</h2>
-                                <span>Youtube - VIP</span>
-                            </div>
-                        </div>
-                        <div class="job_salary">
-                            <h4>$12.5 - $25.5k /yr</h4>
-                            <span>4 days ago</span>
-                        </div>
-                    </a>
-
-                    <a href="job-details.html" class="job_card" data-tags="php">
-                        <div class="job_details">
-                            <div class="img">
-                                <i class="fab fa-wordpress"></i>
-                            </div>
-                            <div class="text">
-                                <h2>WordPress Developer</h2>
-                                <span>WordPress - Mid Post</span>
-                            </div>
-                        </div>
-                        <div class="job_salary">
-                            <h4>$5 - $9k /yr</h4>
-                            <span>5 days ago</span>
-                        </div>
-                    </a>
-
-                    <a href="job-details.html" class="job_card" data-tags="javascript">
-                        <div class="job_details">
-                            <div class="img">
-                                <i class="fab fa-angular"></i>
-                            </div>
-                            <div class="text">
-                                <h2>Angular Developer</h2>
-                                <span>Angular - Senior Post</span>
-                            </div>
-                        </div>
-                        <div class="job_salary">
-                            <h4>$9 - $15.5k /yr</h4>
-                            <span>3 days ago</span>
-                        </div>
-                    </a>
-
-                    <a href="job-details.html" class="job_card" data-tags="design">
-                        <div class="job_details">
-                            <div class="img">
-                                <i class="fab fa-figma"></i>
-                            </div>
-                            <div class="text">
-                                <h2>UI Designer</h2>
-                                <span>Figma - Junior Post</span>
-                            </div>
-                        </div>
-                        <div class="job_salary">
-                            <h4>$5.5 - $9.5k /yr</h4>
-                            <span>2 days ago</span>
-                        </div>
-                    </a>
+                    <div id="no-results" class="empty-state" hidden>
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <p>No jobs match your current filters.</p>
+                        <button type="button" class="tag" id="clear-filters">Clear Filters</button>
+                    </div>
                 </div>
             </main>
         </div>
 
+    <script src="jobs.js"></script>
     <script src="job-filters.js"></script>
     <script src="layout.js"></script>
 </body>

@@ -49,25 +49,42 @@ npx serve .
 ├── login.html              # Sign-in
 ├── signup.html             # Sign-up
 ├── forgot-password.html    # Password recovery
-├── style.css               # Portal styles (design tokens + responsive breakpoints)
+├── style.css               # Portal styles (design tokens, badges, skeleton, responsive)
 ├── login.css               # Auth page styles
+├── jobs.js                 # Job data (single source of truth for all listings)
+├── job-filters.js          # Renderer, debounced search, skeleton, empty state, badges
 ├── layout.js               # Shared sidebar navigation (single source of truth)
-├── job-filters.js          # Shared search/filter logic for the job boards
 └── pic/logo.jpg            # Favicon / brand logo
 ```
 
 ## How the shared pieces work
 
+- **`jobs.js`** — the single source of truth for all job listings. Each entry carries the title, company, icon class, salary range, posting age, category tags, and structured fields for location, type, and seniority level — all rendered automatically.
+- **`job-filters.js`** — renders cards from `jobs.js` and powers search (debounced 250 ms), category select, recency select, and tag chips on `dashboard.html` / `jobs.html`. On `index.html` it renders the top 3 most recent jobs as featured cards. A skeleton shimmer is shown briefly during initial render, and an empty state appears when no jobs match the current filters.
 - **`layout.js`** — injects the sidebar into every portal page (pages contain only `<nav id="app-nav"></nav>`). It detects the current page from the URL and marks the matching link as active, so adding or renaming a page is a one-line change.
-- **`job-filters.js`** — powers the search box, category select, recency select, and tag chips on `dashboard.html` and `jobs.html`. Cards carry a `data-tags` attribute (e.g. `data-tags="programming, design"`) that the filter script reads. The script no-ops on pages that don't expose the controls.
-- **`style.css`** — colors are defined once as CSS variables in `:root` (e.g. `--accent`, `--bg`), so rebranding is a single edit. Responsive breakpoints at 1024px, 768px, and 480px turn the sidebar into a top nav on small screens.
+- **`style.css`** — colors are defined once as CSS variables in `:root` (e.g. `--accent`, `--bg`), so rebranding is a single edit. Includes card hover/active/focus-visible states, colored badge pills for location/type/level, skeleton shimmer animation, and responsive breakpoints at 1024px, 768px, and 480px.
 
 ## Adding a job
 
-1. Give the card a `data-tags` attribute matching the filter chips:
-   `data-tags="programming, design"`
-2. Include the posting age inside `.job_salary span` as `<n> days ago` — the recency filter parses this text.
-3. Paste the card markup as a `.job_card` block in `dashboard.html` and `jobs.html`.
+Open `jobs.js` and append an object to the `JOBS` array:
+
+```js
+{
+  title: 'Staff Engineer',
+  company: 'Stripe',
+  icon: 'fab fa-stripe',          // any Font Awesome brand class
+  categories: ['programming'],
+  salaryMin: 180,                  // annual, USD (whole thousands)
+  salaryMax: 250,
+  postedDays: 1,
+  type: 'Full-time',              // or 'Contract'
+  location: 'Remote',             // or 'Hybrid' / 'On-site'
+  level: 'Senior',                // or 'Junior' / 'Mid' / 'Manager'
+  dashboard: true                 // true = shown on dashboard recent list
+}
+```
+
+The renderer in `job-filters.js` handles all markup, badges, and count automatically.
 
 ## Customizing the brand
 
@@ -78,9 +95,12 @@ npx serve .
 ## Accessibility
 
 - Keyboard-visible `:focus-visible` rings on interactive elements.
-- All inputs have associated `<label>` elements.
-- Filter tag chips are operable by mouse and keyboard (Enter / Space) and expose `aria-pressed` state.
-- Semantic landmarks (`<nav>`, `<main>`) on every page.
+- All inputs have associated `<label>` elements; selects carry `aria-label`.
+- Filter tag chips are operable by mouse and keyboard (Enter / Space) and expose `aria-pressed` + `aria-controls`.
+- Each rendered card has a descriptive `aria-label` for screen readers.
+- `aria-hidden="true"` on all decorative Font Awesome icons.
+- `aria-live="polite"` + `aria-busy` on the job list for announced count changes.
+- Empty state appears when no jobs match, with a clear-filters button.
 
 ## Browser support
 

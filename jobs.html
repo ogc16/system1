@@ -23,14 +23,14 @@
                 <h1>All Jobs</h1>
 
                 <div class="search_bar">
-                    <input type="search" id="job-search" placeholder="Search job here...">
-                    <select name="" id="job-category">
+                    <input type="search" id="job-search" placeholder="Search job here..." aria-label="Search jobs">
+                    <select id="job-category" aria-label="Filter by category">
                         <option>Category</option>
-                        <option>Web Design</option>
-                        <option>App Design</option>
-                        <option>App Development</option>
+                        <option>Programming</option>
+                        <option>Design</option>
+                        <option>Marketing</option>
                     </select>
-                    <select id="job-filter" class="filter">
+                    <select id="job-filter" class="filter" aria-label="Filter by recency">
                         <option value="">Filter</option>
                         <option value="3">Last 3 days</option>
                         <option value="5">Last 5 days</option>
@@ -38,263 +38,31 @@
                 </div>
 
                 <div class="tags_bar">
-<div class="tag" data-tag="programming">
-                            <i class="fas fa-times"></i>
-                            <span>Programming</span>
-                        </div>
-                        <div class="tag" data-tag="design">
-                            <i class="fas fa-times"></i>
-                            <span>Design</span>
-                        </div>
-                        <div class="tag" data-tag="marketing">
-                            <i class="fas fa-times"></i>
-                            <span>Marketing</span>
-                        </div>
+                    <div class="tag" data-tag="programming">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span>Programming</span>
+                    </div>
+                    <div class="tag" data-tag="design">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span>Design</span>
+                    </div>
+                    <div class="tag" data-tag="marketing">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span>Marketing</span>
+                    </div>
                 </div>
 
 <div class="row">
-                    <p>Showing <span id="job-count">15</span> Jobs</p>
+                    <p>Showing <span id="job-count">18</span> Jobs</p>
                     <a href="job-details.html">See all</a>
                 </div>
 
-                <div class="job_card" data-tags="design">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-google-drive"></i>
-                        </div>
-                        <div class="text">
-                            <h2>UX Designer</h2>
-                            <span>Google Drive - Junior Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$6.7 - $12.5k /yr</h4>
-                        <span>1 days ago</span>
-                    </div>
-                </div>
+                <div id="job-list" class="job-list" aria-live="polite" aria-busy="true"></div>
 
-                <div class="job_card" data-tags="programming">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-google"></i>
-                        </div>
-                        <div class="text">
-                            <h2>JavaScript Developer</h2>
-                            <span>Google - Senior Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$8.7 - $13.2k /yr</h4>
-                        <span>2 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="programming">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-facebook"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Product Developer</h2>
-                            <span>Facbook - Manager Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$11 - $18.5k /yr</h4>
-                        <span>2 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="programming">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-git-alt"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Programmer</h2>
-                            <span>Github - Juni Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$6 - $11.5k /yr</h4>
-                        <span>3 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="programming">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-youtube"></i>
-                        </div>
-                        <div class="text">
-                            <h2>React.js Expert</h2>
-                            <span>Youtube - VIP</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$12.5 - $25.5k /yr</h4>
-                        <span>4 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="programming">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-microsoft"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Backend Engineer</h2>
-                            <span>Microsoft - Senior Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$9 - $16k /yr</h4>
-                        <span>5 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="marketing">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-amazon"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Data Analyst</h2>
-                            <span>Amazon - Mid Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$7 - $12k /yr</h4>
-                        <span>6 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="design">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-apple"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Product Designer</h2>
-                            <span>Apple - Mid Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$10 - $16k /yr</h4>
-                        <span>2 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="programming,design">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-shopify"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Frontend Developer</h2>
-                            <span>Shopify - Junior Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$7 - $12k /yr</h4>
-                        <span>3 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="marketing">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-airbnb"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Growth Marketer</h2>
-                            <span>Airbnb - Manager Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$8 - $13k /yr</h4>
-                        <span>4 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="programming">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-dropbox"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Cloud Engineer</h2>
-                            <span>Dropbox - Senior Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$13 - $21k /yr</h4>
-                        <span>5 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="marketing">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-linkedin-in"></i>
-                        </div>
-                        <div class="text">
-                            <h2>SEO Specialist</h2>
-                            <span>LinkedIn - Mid Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$6 - $10k /yr</h4>
-                        <span>3 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="programming">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-slack"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Node.js Developer</h2>
-                            <span>Slack - Mid Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$9 - $15k /yr</h4>
-                        <span>2 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="design,marketing">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-spotify"></i>
-                        </div>
-                        <div class="text">
-                            <h2>Brand Designer</h2>
-                            <span>Spotify - Junior Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$6.5 - $11k /yr</h4>
-                        <span>5 days ago</span>
-                    </div>
-                </div>
-
-                <div class="job_card" data-tags="programming">
-                    <div class="job_details">
-                        <div class="img">
-                            <i class="fab fa-git-alt"></i>
-                        </div>
-                        <div class="text">
-                            <h2>DevOps Engineer</h2>
-                            <span>GitHub - Senior Post</span>
-                        </div>
-                    </div>
-                    <div class="job_salary">
-                        <h4>$14 - $22k /yr</h4>
-                        <span>6 days ago</span>
-                    </div>
+                <div id="no-results" class="empty-state" hidden>
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <p>No jobs match your current filters.</p>
+                    <button type="button" class="tag" id="clear-filters">Clear Filters</button>
                 </div>
 
                 <div class="row">
@@ -305,6 +73,7 @@
         </main>
     </div>
 
+    <script src="jobs.js"></script>
     <script src="job-filters.js"></script>
     <script src="layout.js"></script>
 </body>
